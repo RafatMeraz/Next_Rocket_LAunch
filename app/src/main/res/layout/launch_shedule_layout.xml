@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:layout_margin="4dp">
+    <ImageView
+        android:id="@+id/launchImageView"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="150dp"
+        android:layout_margin="6dp"
+        android:src="@drawable/space"/>
+    <LinearLayout
+        android:id="@+id/launchLinearLayout"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/launchTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RocketName"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_margin="4dp"/>
+        <TextView
+            android:id="@+id/launchTimeLocationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LaunchTime and Locatiom"
+            android:textSize="16dp"
+            android:layout_margin="2dp"/>
+        <TextView
+            android:id="@+id/missionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LaunchTime and Locatiom"
+            android:textSize="16dp"
+            android:layout_margin="2dp"/>
+        <TextView
+            android:id="@+id/launchCountryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Launching country name"
+            android:textSize="16dp"
+            android:layout_margin="2dp"/>
+        <TextView
+            android:id="@+id/launchSummaryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rafat is good guy who doesn't like to play PUBG. Beacause of this fucking Nasa Space challange he is getting a fucking life. Even doestn't get any time for any other things. "
+            android:textSize="16dp"
+            android:layout_margin="2dp"
+            android:padding="2dp"/>
+
+    </LinearLayout>
+</LinearLayout>
