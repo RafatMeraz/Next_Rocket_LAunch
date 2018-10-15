@@ -1,15 +1,13 @@
 package com.example.dell.rocketlauncher;
 
 import android.app.ProgressDialog;
-import android.graphics.Movie;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.recyclerview.extensions.ListAdapter;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -20,40 +18,33 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class LaunchListActivity extends AppCompatActivity {
+public class MissionActivity extends AppCompatActivity {
 
     private static final String TAG = LaunchListActivity.class.getSimpleName();
 
-    private static String url = "https://launchlibrary.net/1.3/launch";
-    private  ArrayList<HashMap<String, String>> contactList;
+    private static String url = "https://launchlibrary.net/1.3/mission";
+    private ArrayList<HashMap<String, String>> contactList;
 
     private ProgressDialog pDialog;
-
-    private RocketLaunchAdapter mAdapter;
     private ListView listView;
+    private Mission m ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_launch_list);
+        setContentView(R.layout.activity_mission);
 
         initialization();
     }
 
     private void initialization() {
-        listView = findViewById(R.id.launchSheduleListView);
+        listView = findViewById(R.id.missionListView);
 
         contactList = new ArrayList<>();
 
 
         new GetContacts().execute();
-
     }
 
     private class GetContacts extends AsyncTask<Void, Void, Void> {
@@ -62,7 +53,7 @@ public class LaunchListActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(LaunchListActivity.this);
+            pDialog = new ProgressDialog(MissionActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -83,7 +74,7 @@ public class LaunchListActivity extends AppCompatActivity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("launches");
+                    JSONArray contacts = jsonObj.getJSONArray("missions");
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
@@ -91,19 +82,25 @@ public class LaunchListActivity extends AppCompatActivity {
 
                         String id = c.getString("id");
                         String name = c.getString("name");
-                        String net = c.getString("net");
-                        String tbdtime = c.getString("tbdtime");
-                        String tbddate = c.getString("tbddate");
+                        String description = c.getString("description");
+                        String type = c.getString("type");
+                        String infoURL = c.getString("infoURL");
+                        String wikiURL = c.getString("wikiURL");
+
+                        m = new Mission(id, name, description, type, infoURL, wikiURL);
 
                         // tmp hash map for single launch
-                        HashMap<String, String> launch = new HashMap<>();
+                        HashMap<String, String> mission = new HashMap<>();
 
                         // adding each child node to HashMap key => value
-                        launch.put("id", id);
-                        launch.put("name", name);
-                        launch.put("net", net);
+                        mission.put("id", id);
+                        mission.put("name", name);
+                        mission.put("description", description);
+                        mission.put("type", type);
+                        mission.put("infoURL", infoURL);
+                        mission.put("wikiURL", wikiURL);
                         // adding launch to launch list
-                        contactList.add(launch);
+                        contactList.add(mission);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -145,12 +142,22 @@ public class LaunchListActivity extends AppCompatActivity {
              * Updating parsed JSON data into ListView
              * */
             android.widget.ListAdapter adapter = new SimpleAdapter(
-                    LaunchListActivity.this, contactList,
-                    R.layout.launch_shedule_layout, new String[]{"name", "net",
-                    "tbdtime"}, new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView});
+                    MissionActivity.this, contactList,
+                    R.layout.launch_shedule_layout, new String[]{"name", "description",
+                    "type"}, new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView, R.id.missionTextView});
 
             listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(MissionActivity.this, MissionDetails.class);
+                    intent.putExtra("launch", contactList.get(position));
+                    startActivity(intent);
+                }
+            });
         }
 
     }
+
+
 }

@@ -9,9 +9,9 @@
         android:id="@+id/launchImageView"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:layout_margin="6dp"
-        android:src="@drawable/space"/>
+        android:src="@drawable/project"/>
     <LinearLayout
         android:id="@+id/launchLinearLayout"
         android:layout_width="0dp"
@@ -37,24 +37,9 @@
             android:id="@+id/missionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LaunchTime and Locatiom"
+            android:text="Mission Name"
             android:textSize="16dp"
             android:layout_margin="2dp"/>
-        <TextView
-            android:id="@+id/launchCountryTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Launching country name"
-            android:textSize="16dp"
-            android:layout_margin="2dp"/>
-        <TextView
-            android:id="@+id/launchSummaryTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rafat is good guy who doesn't like to play PUBG. Beacause of this fucking Nasa Space challange he is getting a fucking life. Even doestn't get any time for any other things. "
-            android:textSize="16dp"
-            android:layout_margin="2dp"
-            android:padding="2dp"/>
 
     </LinearLayout>
 </LinearLayout>

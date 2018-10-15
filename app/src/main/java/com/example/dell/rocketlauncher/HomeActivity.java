@@ -85,7 +85,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.missionCardView:
-
+                intent = new Intent(HomeActivity.this, MissionActivity.class);
+                startActivity(intent);
                 break;
             case R.id.galleryCardView:
 

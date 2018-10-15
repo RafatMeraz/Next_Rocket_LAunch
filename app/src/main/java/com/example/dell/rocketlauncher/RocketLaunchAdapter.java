@@ -5,34 +5,28 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 public class RocketLaunchAdapter extends RecyclerView.Adapter<RocketLaunchAdapter.MyViewHolder> {
 
-    private List<LaunchRocket> rocketList;
+    private List<Launch> launchList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView rocketName, launchTimeLocation, launchCountry, launchingMission, descriptionTV;
-        public ImageView launchImageView;
+        public TextView name, net;
 
         public MyViewHolder(View view) {
             super(view);
-            rocketName = view.findViewById(R.id.launchTitleTextView);
-            launchTimeLocation = view.findViewById(R.id.launchTimeLocationTextView);
-            launchImageView = view.findViewById(R.id.launchImageView);
-            launchCountry = view.findViewById(R.id.launchCountryTextView);
-            launchingMission = view.findViewById(R.id.missionTextView);
-            descriptionTV = view.findViewById(R.id.launchSummaryTextView);
+            name = (TextView) view.findViewById(R.id.launchTitleTextView);
+            net = (TextView) view.findViewById(R.id.launchTimeLocationTextView);
 
         }
     }
 
 
-    public RocketLaunchAdapter(List<LaunchRocket> rocketList) {
-        this.rocketList = rocketList;
+    public RocketLaunchAdapter(List<Launch> launchList) {
+        this.launchList = launchList;
     }
 
     @Override
@@ -45,19 +39,13 @@ public class RocketLaunchAdapter extends RecyclerView.Adapter<RocketLaunchAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        LaunchRocket rocket = rocketList.get(position);
-        //get data from api and set here
-        //please set here image tooo
-        holder.rocketName.setText(rocket.getName());
-        holder.launchCountry.setText(rocket.getCountry());
-        holder.launchingMission.setText(rocket.getMission());
-        holder.launchTimeLocation.setText(rocket.getTime()+" "+rocket.getLocation());
-        holder.descriptionTV.setText(rocket.getDescription());
-
+        Launch launch = launchList.get(position);
+        holder.name.setText(launch.getName());
+        holder.net.setText(launch.getNet());
     }
 
     @Override
     public int getItemCount() {
-        return rocketList.size();
+        return launchList.size();
     }
 }

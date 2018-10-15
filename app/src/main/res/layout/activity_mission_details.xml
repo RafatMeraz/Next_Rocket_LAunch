@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MissionDetails"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_margin="6dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Mission Name"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+            <TextView
+                android:id="@+id/missionNameTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Mission Name"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_margin="6dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Description"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+            <TextView
+                android:id="@+id/missionDescriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Mission Name"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_margin="6dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Type"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+            <TextView
+                android:id="@+id/missionTypeTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Mission Name"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_margin="6dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="NASA Info"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+            <TextView
+                android:id="@+id/missionInfoURLTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Mission Name"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_margin="6dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Wiki URL"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+            <TextView
+                android:id="@+id/missionWikiURLTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Mission Name"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</ScrollView>
