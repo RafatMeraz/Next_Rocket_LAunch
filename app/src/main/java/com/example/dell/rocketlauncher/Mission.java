@@ -1,6 +1,8 @@
 package com.example.dell.rocketlauncher;
 
-public class Mission {
+import java.io.Serializable;
+
+public class Mission implements Serializable {
     String id, name, description, type, infoURL, wikiURL;
 
     public Mission(String id, String name, String description, String type, String infoURL, String wikiURL) {

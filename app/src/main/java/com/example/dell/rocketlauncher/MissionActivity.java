@@ -3,6 +3,7 @@ package com.example.dell.rocketlauncher;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -151,7 +152,16 @@ public class MissionActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(MissionActivity.this, MissionDetails.class);
-                    intent.putExtra("launch", contactList.get(position));
+                    HashMap<String, String> launch = contactList.get(position);
+                    String mid = launch.get("id");
+                    String name = launch.get("name");
+                    String description = launch.get("description");
+                    String type = launch.get("type");
+                    String infoURL = launch.get("infoURL");
+                    String wikiURL = launch.get("wikiURL");
+                    Mission mission = new Mission(mid, name, description, type, infoURL, wikiURL);
+                    intent.putExtra("mission", mission);
+
                     startActivity(intent);
                 }
             });

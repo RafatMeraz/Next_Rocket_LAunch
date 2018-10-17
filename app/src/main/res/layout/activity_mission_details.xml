@@ -34,7 +34,6 @@
                 android:text="Mission Name"
                 android:padding="4dp"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 android:layout_margin="4dp"/>
         </LinearLayout>
         <LinearLayout
@@ -57,10 +56,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Mission Name"
+                android:text="Mission Description"
                 android:padding="4dp"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 android:layout_margin="4dp"/>
         </LinearLayout>
         <LinearLayout
@@ -83,10 +81,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Mission Name"
+                android:text="MissionType"
                 android:padding="4dp"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 android:layout_margin="4dp"/>
         </LinearLayout>
         <LinearLayout
@@ -112,7 +109,7 @@
                 android:text="Mission Name"
                 android:padding="4dp"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:textColor="#0b6078"
                 android:layout_margin="4dp"/>
         </LinearLayout>
         <LinearLayout
@@ -138,7 +135,7 @@
                 android:text="Mission Name"
                 android:padding="4dp"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:textColor="#0b6078"
                 android:layout_margin="4dp"/>
         </LinearLayout>
     </LinearLayout>
