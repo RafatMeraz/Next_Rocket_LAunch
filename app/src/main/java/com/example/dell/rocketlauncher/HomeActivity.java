@@ -92,7 +92,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.liveCardView:
-
+                intent = new Intent(HomeActivity.this, WebViewActivity.class);
+                intent.putExtra("link", "https://www.youtube.com/watch?v=wwMDvPCGeE0");
+                startActivity(intent);
                 break;
             case R.id.educationCardView:
 
