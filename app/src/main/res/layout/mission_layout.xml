@@ -9,10 +9,9 @@
         android:id="@+id/launchImageView"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="125dp"
-        android:layout_margin="8dp"
-        android:padding="10dp"
-        android:src="@drawable/rocket"/>
+        android:layout_height="140dp"
+        android:padding="15dp"
+        android:src="@drawable/astronautsecond"/>
     <LinearLayout
         android:id="@+id/launchLinearLayout"
         android:layout_width="0dp"
@@ -21,7 +20,7 @@
         android:orientation="vertical"
         android:layout_margin="6dp">
         <TextView
-            android:id="@+id/launchTitleTextView"
+            android:id="@+id/missionTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RocketName"
@@ -29,10 +28,17 @@
             android:textSize="20dp"
             android:layout_margin="4dp"/>
         <TextView
-            android:id="@+id/launchTimeLocationTextView"
+            android:id="@+id/missionDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LaunchTime and Locatiom"
+            android:textSize="16dp"
+            android:layout_margin="2dp"/>
+        <TextView
+            android:id="@+id/missionTypeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mission Name"
             android:textSize="16dp"
             android:layout_margin="2dp"/>
 

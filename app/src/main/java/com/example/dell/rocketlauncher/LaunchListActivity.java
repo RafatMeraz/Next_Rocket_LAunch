@@ -10,6 +10,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -42,18 +43,26 @@ public class LaunchListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initialization();
     }
 
     private void initialization() {
         listView = findViewById(R.id.launchSheduleListView);
-
         contactList = new ArrayList<>();
-
 
         new GetContacts().execute();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private class GetContacts extends AsyncTask<Void, Void, Void> {

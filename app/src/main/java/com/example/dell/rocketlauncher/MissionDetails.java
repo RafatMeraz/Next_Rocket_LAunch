@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ import java.util.HashMap;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission_details);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initialization();
     }
@@ -56,5 +57,13 @@ import java.util.HashMap;
              }
          });
     }
+     @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
+         switch (item.getItemId()) {
+             case android.R.id.home:
+                 this.finish();
+         }
+         return super.onOptionsItemSelected(item);
+     }
 
  }

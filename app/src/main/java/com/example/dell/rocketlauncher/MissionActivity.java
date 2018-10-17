@@ -1,5 +1,6 @@
 package com.example.dell.rocketlauncher;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -7,6 +8,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -35,6 +37,7 @@ public class MissionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initialization();
     }
@@ -43,9 +46,16 @@ public class MissionActivity extends AppCompatActivity {
         listView = findViewById(R.id.missionListView);
 
         contactList = new ArrayList<>();
-
-
         new GetContacts().execute();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private class GetContacts extends AsyncTask<Void, Void, Void> {
@@ -144,8 +154,8 @@ public class MissionActivity extends AppCompatActivity {
              * */
             android.widget.ListAdapter adapter = new SimpleAdapter(
                     MissionActivity.this, contactList,
-                    R.layout.launch_shedule_layout, new String[]{"name", "description",
-                    "type"}, new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView, R.id.missionTextView});
+                    R.layout.mission_layout, new String[]{"name", "description",
+                    "type"}, new int[]{R.id.missionTitleTextView, R.id.missionDescriptionTextView, R.id.missionTypeTextView});
 
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
