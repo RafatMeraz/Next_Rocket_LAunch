@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -82,7 +83,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.newsCardView:
-
+                intent = new Intent(HomeActivity.this, NewsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.missionCardView:
                 intent = new Intent(HomeActivity.this, MissionActivity.class);
@@ -93,6 +95,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.liveCardView:
                 intent = new Intent(HomeActivity.this, WebViewActivity.class);
+                Toast.makeText(this, "Loading Live! Please wait....", Toast.LENGTH_LONG).show();
                 intent.putExtra("link", "https://www.youtube.com/watch?v=wwMDvPCGeE0");
                 startActivity(intent);
                 break;

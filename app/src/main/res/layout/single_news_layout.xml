@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="180dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp"
     android:layout_margin="2dp">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:weightSum="3"
-        android:layout_margin="4dp"
-        android:orientation="horizontal">
+        android:layout_margin="4dp">
         <ImageView
             android:id="@+id/launchImageView"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="125dp"
-            android:layout_margin="8dp"
-            android:padding="10dp"
-            android:src="@drawable/rocket"/>
+            android:layout_height="120dp"
+            android:padding="18dp"
+            android:src="@drawable/single_news"/>
         <LinearLayout
             android:id="@+id/launchLinearLayout"
             android:layout_width="0dp"
@@ -27,19 +27,28 @@
             android:orientation="vertical"
             android:layout_margin="6dp">
             <TextView
-                android:id="@+id/launchTitleTextView"
+                android:id="@+id/newsNumberTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rocket_name_tv"
+                android:text="@string/news_number_tv"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:layout_margin="4dp"/>
             <TextView
-                android:id="@+id/launchTimeLocationTextView"
+                android:id="@+id/newsDescriptionTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/launch_time_tv"
+                android:text="@string/news_description_tv"
+                android:textSize="17dp"
+                android:textStyle=""
+                android:layout_margin="2dp"/>
+            <TextView
+                android:id="@+id/newsURLTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/news_url_tv"
                 android:textSize="16dp"
+                android:textColor="#0c7ba7"
                 android:layout_margin="2dp"/>
 
         </LinearLayout>

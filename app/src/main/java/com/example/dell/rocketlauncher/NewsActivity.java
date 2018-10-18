@@ -20,32 +20,34 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MissionActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
+
 
     private static final String TAG = MissionActivity.class.getSimpleName();
 
-    private static String url = "https://launchlibrary.net/1.3/mission";
-    private ArrayList<HashMap<String, String>> missionList;
+    private static String url = "http://hubblesite.org/api/v3/news";
+    private ArrayList<HashMap<String, String>> newsList;
 
     private ProgressDialog pDialog;
     private ListView listView;
-    private Mission m ;
+    Mission m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mission);
+        setContentView(R.layout.activity_news);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initialization();
     }
 
     private void initialization() {
-        listView = findViewById(R.id.missionListView);
+        listView = findViewById(R.id.newsListView);
 
-        missionList = new ArrayList<>();
-        new GetMissions().execute();
+        newsList = new ArrayList<>();
+        new GetNews().execute();
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -56,13 +58,13 @@ public class MissionActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class GetMissions extends AsyncTask<Void, Void, Void> {
+    private class GetNews extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(MissionActivity.this);
+            pDialog = new ProgressDialog(NewsActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -80,36 +82,29 @@ public class MissionActivity extends AppCompatActivity {
 
             if (jsonStr != null) {
                 try {
-                    JSONObject jsonObj = new JSONObject(jsonStr);
+                    JSONArray news = new JSONArray(jsonStr);
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("missions");
 
                     // looping through All Contacts
-                    for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
+                    for (int i = 0; i < news.length(); i++) {
+                        JSONObject c = news.getJSONObject(i);
 
-                        String id = c.getString("id");
+                        String id = c.getString("news_id");
                         String name = c.getString("name");
-                        String description = c.getString("description");
-                        String type = c.getString("type");
-                        String infoURL = c.getString("infoURL");
-                        String wikiURL = c.getString("wikiURL");
+                        String url = c.getString("url");
 
-                        m = new Mission(id, name, description, type, infoURL, wikiURL);
+                        //m = new Mission(id, name, description, type, infoURL, wikiURL);
 
                         // tmp hash map for single launch
                         HashMap<String, String> mission = new HashMap<>();
 
                         // adding each child node to HashMap key => value
-                        mission.put("id", id);
+                        mission.put("news_id", id);
                         mission.put("name", name);
-                        mission.put("description", description);
-                        mission.put("type", type);
-                        mission.put("infoURL", infoURL);
-                        mission.put("wikiURL", wikiURL);
+                        mission.put("url", url);
                         // adding launch to launch list
-                        missionList.add(mission);
+                        newsList.add(mission);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -151,31 +146,23 @@ public class MissionActivity extends AppCompatActivity {
              * Updating parsed JSON data into ListView
              * */
             android.widget.ListAdapter adapter = new SimpleAdapter(
-                    MissionActivity.this, missionList,
-                    R.layout.mission_layout, new String[]{"name", "description",
-                    "type"}, new int[]{R.id.missionTitleTextView, R.id.missionDescriptionTextView, R.id.missionTypeTextView});
+                    NewsActivity.this, newsList,
+                    R.layout.single_news_layout, new String[]{"news_id", "name",
+                    "url"}, new int[]{R.id.newsNumberTextView, R.id.newsDescriptionTextView, R.id.newsURLTextView});
 
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(MissionActivity.this, MissionDetails.class);
-                    HashMap<String, String> launch = missionList.get(position);
-                    String mid = launch.get("id");
-                    String name = launch.get("name");
-                    String description = launch.get("description");
-                    String type = launch.get("type");
-                    String infoURL = launch.get("infoURL");
-                    String wikiURL = launch.get("wikiURL");
-                    Mission mission = new Mission(mid, name, description, type, infoURL, wikiURL);
-                    intent.putExtra("mission", mission);
-
-                    startActivity(intent);
+                    String url = newsList.get(position).get("url").toString();
+                    Intent webIntent = new Intent(NewsActivity.this, WebViewActivity.class);
+                    webIntent.putExtra("link", url);
+                    Toast.makeText(NewsActivity.this, "Loading Website! Please wait...", Toast.LENGTH_LONG).show();
+                    startActivity(webIntent);
                 }
             });
         }
 
     }
-
 
 }

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
-        android:background="@drawable/launcher2"
+        android:background="@drawable/cover"
 
         android:theme="@style/AppTheme.AppBarOverlay">
 

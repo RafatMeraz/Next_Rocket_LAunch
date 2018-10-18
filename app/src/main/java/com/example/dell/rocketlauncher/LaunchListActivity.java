@@ -1,18 +1,16 @@
 package com.example.dell.rocketlauncher;
 
 import android.app.ProgressDialog;
-import android.graphics.Movie;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.recyclerview.extensions.ListAdapter;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -20,19 +18,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import static java.security.AccessController.getContext;
 
 public class LaunchListActivity extends AppCompatActivity {
 
     private static final String TAG = LaunchListActivity.class.getSimpleName();
 
     private static String url = "https://launchlibrary.net/1.3/launch";
-    private  ArrayList<HashMap<String, String>> contactList;
+    private  ArrayList<HashMap<String, String>> launchList;
 
     private ProgressDialog pDialog;
 
@@ -50,7 +47,7 @@ public class LaunchListActivity extends AppCompatActivity {
 
     private void initialization() {
         listView = findViewById(R.id.launchSheduleListView);
-        contactList = new ArrayList<>();
+        launchList = new ArrayList<>();
 
         new GetContacts().execute();
 
@@ -112,7 +109,7 @@ public class LaunchListActivity extends AppCompatActivity {
                         launch.put("name", name);
                         launch.put("net", net);
                         // adding launch to launch list
-                        contactList.add(launch);
+                        launchList.add(launch);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -153,10 +150,11 @@ public class LaunchListActivity extends AppCompatActivity {
             /**
              * Updating parsed JSON data into ListView
              * */
+
             android.widget.ListAdapter adapter = new SimpleAdapter(
-                    LaunchListActivity.this, contactList,
-                    R.layout.launch_shedule_layout, new String[]{"name", "net",
-                    "tbdtime"}, new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView});
+                    LaunchListActivity.this, launchList,
+                    R.layout.launch_shedule_layout, new String[]{"name", "net"}
+                    , new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView});
 
             listView.setAdapter(adapter);
         }

@@ -91,4 +91,41 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="launch_schedule_button_text">Launch Schedule</string>
+    <string name="news_button_text">News Archive</string>
+    <string name="mission_button_text">Missions</string>
+    <string name="gallery_button_text">Gallery</string>
+    <string name="nasa_live_button_text">NASA Live</string>
+    <string name="education_button_text">Space Education</string>
+    <string name="mission_name_tv">Mission Name</string>
+    <string name="description_tv">Description</string>
+    <string name="type_tv">Type</string>
+    <string name="nasa_info_tv">NASA Info</string>
+    <string name="wiki_info_tv">Wiki Info</string>
+    <string name="dummy_placeholder">dummy text</string>
+    <string name="rocket_name_tv">Rocket Name</string>
+    <string name="launch_time_tv">LaunchTime</string>
+    <string name="news_number_tv">News Number</string>
+    <string name="news_description_tv">News Description</string>
+    <string name="news_url_tv">News URL</string>
+    <plurals name="days">
+        <item quantity="zero">%d Days</item>
+        <item quantity="one">%d Day</item>
+        <item quantity="other">%d Days</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="zero">%d Hours</item>
+        <item quantity="one">%d Hour</item>
+        <item quantity="other">%d Hours</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="zero">%d Minutes</item>
+        <item quantity="one">%d Minute</item>
+        <item quantity="other">%d Minutes</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="zero">%d Seconds</item>
+        <item quantity="one">%d Second</item>
+        <item quantity="other">%d Seconds</item>
+    </plurals>
 </resources>

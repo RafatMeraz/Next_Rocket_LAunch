@@ -35,7 +35,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".WebViewActivity" />
-        <activity android:name=".NasaLiveTV"></activity>
+        <activity android:name=".NasaLiveTV" />
+        <activity android:name=".NewsActivity"></activity>
     </application>
 
 </manifest>
