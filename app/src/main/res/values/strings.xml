@@ -108,6 +108,13 @@
     <string name="news_number_tv">News Number</string>
     <string name="news_description_tv">News Description</string>
     <string name="news_url_tv">News URL</string>
+    <string name="launch_name">Name</string>
+    <string name="launch_time">Launch time</string>
+    <string name="launch_window_start">Window start</string>
+    <string name="launch_window_end">Window End</string>
+    <string name="launch_live">Live Link</string>
+    <string name="launch_tbdtime">TbdTime</string>
+    <string name="launch_tbdate">TbdDate</string>
     <plurals name="days">
         <item quantity="zero">%d Days</item>
         <item quantity="one">%d Day</item>

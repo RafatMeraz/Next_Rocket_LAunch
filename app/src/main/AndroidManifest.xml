@@ -36,7 +36,8 @@
 
         <activity android:name=".WebViewActivity" />
         <activity android:name=".NasaLiveTV" />
-        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".NewsActivity" />
+        <activity android:name=".LaunchDetails"></activity>
     </application>
 
 </manifest>

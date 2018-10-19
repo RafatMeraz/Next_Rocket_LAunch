@@ -2,12 +2,15 @@ package com.example.dell.rocketlauncher;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -28,7 +31,7 @@ public class LaunchListActivity extends AppCompatActivity {
 
     private static final String TAG = LaunchListActivity.class.getSimpleName();
 
-    private static String url = "https://launchlibrary.net/1.3/launch";
+    private static String url = "https://launchlibrary.net/1.4/launch?next=5";
     private  ArrayList<HashMap<String, String>> launchList;
 
     private ProgressDialog pDialog;
@@ -86,6 +89,7 @@ public class LaunchListActivity extends AppCompatActivity {
 
             if (jsonStr != null) {
                 try {
+
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
@@ -94,20 +98,41 @@ public class LaunchListActivity extends AppCompatActivity {
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
+                        HashMap<String, String> launch = new HashMap<>();
 
                         String id = c.getString("id");
                         String name = c.getString("name");
                         String net = c.getString("net");
                         String tbdtime = c.getString("tbdtime");
                         String tbddate = c.getString("tbddate");
+                        String windowstart = c.getString("windowstart");
+                        String windowend = c.getString("windowend");
+                        String changed = c.getString("changed");
+                        String launchUrl = "Unknown";
+                        if(c.has("vidURLs")){
+                            JSONArray urlArray = c.getJSONArray("vidURLs");
+                            launchUrl = urlArray.getString(0);
+                        }
+                        
 
+                        //String status = c.getString("status");
+                        //String probability = c.getString("probability");
+                        //String hashtag = c.getString("hashtag");
+                        //String isp = c.getString("isp");
                         // tmp hash map for single launch
-                        HashMap<String, String> launch = new HashMap<>();
+
 
                         // adding each child node to HashMap key => value
                         launch.put("id", id);
                         launch.put("name", name);
                         launch.put("net", net);
+                        launch.put("tbdtime", tbdtime);
+                        launch.put("tbddate", tbddate);
+                        launch.put("windowstart", windowstart);
+                        launch.put("windowend", windowend);
+                        launch.put("changed", changed);
+                        launch.put("url", launchUrl);
+                        //launch.put("isp", isp);
                         // adding launch to launch list
                         launchList.add(launch);
                     }
@@ -157,6 +182,26 @@ public class LaunchListActivity extends AppCompatActivity {
                     , new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView});
 
             listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    String id = launchList.get(i).get("id");
+                    String name = launchList.get(i).get("name");
+                    String net = launchList.get(i).get("net");
+                    String tbdTime = launchList.get(i).get("tbdtime");
+                    String tbdDate = launchList.get(i).get("tbddate");
+                    String windowStart = launchList.get(i).get("windowstart");
+                    String windowEnd = launchList.get(i).get("windowend");
+                    String changed = launchList.get(i).get("changed");
+                    String url = launchList.get(i).get("url");
+
+                    Launch2 launch2 = new Launch2(id, name, net, tbdTime, tbdDate, windowStart, windowEnd, changed, url);
+                    Intent detailsIntent = new Intent(LaunchListActivity.this, LaunchDetails.class);
+                    detailsIntent.putExtra("launch", launch2);
+                    startActivity(detailsIntent);
+
+                }
+            });
         }
 
     }
