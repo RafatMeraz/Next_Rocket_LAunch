@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -31,13 +32,14 @@ public class LaunchListActivity extends AppCompatActivity {
 
     private static final String TAG = LaunchListActivity.class.getSimpleName();
 
-    private static String url = "https://launchlibrary.net/1.4/launch?next=5";
+    private static String url = "https://launchlibrary.net/1.4/launch/next/5";
     private  ArrayList<HashMap<String, String>> launchList;
 
     private ProgressDialog pDialog;
 
     private RocketLaunchAdapter mAdapter;
     private ListView listView;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class LaunchListActivity extends AppCompatActivity {
     private void initialization() {
         listView = findViewById(R.id.launchSheduleListView);
         launchList = new ArrayList<>();
+        imageView = findViewById(R.id.launchImageViewList);
 
         new GetContacts().execute();
 
@@ -111,17 +114,22 @@ public class LaunchListActivity extends AppCompatActivity {
                         String launchUrl = "Unknown";
                         if(c.has("vidURLs")){
                             JSONArray urlArray = c.getJSONArray("vidURLs");
-                            launchUrl = urlArray.getString(0);
+                            for (int o=0; o<urlArray.length(); o++){
+                                launchUrl = urlArray.getString(0);
+                                break;
+                            }
                         }
-                        
 
-                        //String status = c.getString("status");
-                        //String probability = c.getString("probability");
-                        //String hashtag = c.getString("hashtag");
-                        //String isp = c.getString("isp");
-                        // tmp hash map for single launch
-
-
+                        String stationLocation = null;
+                        String stationMap = null;
+                        String countryCode = null;
+                        JSONObject locationObj = c.getJSONObject("location");
+                        JSONArray padsArray = locationObj.getJSONArray("pads");
+                        JSONObject rocketObj = c.getJSONObject("rocket");
+                        String rocketImg = rocketObj.getString("imageURL");
+                        String location = (String) locationObj.get("name");
+                        countryCode = (String) locationObj.get("countryCode");
+                        stationMap = padsArray.getJSONObject(0).getString("mapURL");
                         // adding each child node to HashMap key => value
                         launch.put("id", id);
                         launch.put("name", name);
@@ -132,8 +140,12 @@ public class LaunchListActivity extends AppCompatActivity {
                         launch.put("windowend", windowend);
                         launch.put("changed", changed);
                         launch.put("url", launchUrl);
-                        //launch.put("isp", isp);
-                        // adding launch to launch list
+                        launch.put("location", location);
+                        launch.put("image", rocketImg);
+                        launch.put("stationlocation", stationLocation);
+                        launch.put("stationmap", stationMap);
+                        launch.put("countrycode", countryCode);
+
                         launchList.add(launch);
                     }
                 } catch (final JSONException e) {
@@ -178,8 +190,8 @@ public class LaunchListActivity extends AppCompatActivity {
 
             android.widget.ListAdapter adapter = new SimpleAdapter(
                     LaunchListActivity.this, launchList,
-                    R.layout.launch_shedule_layout, new String[]{"name", "net"}
-                    , new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView});
+                    R.layout.launch_shedule_layout, new String[]{"name", "net", "location"}
+                    , new int[]{R.id.launchTitleTextView, R.id.launchTimeLocationTextView, R.id.launchLocationTextView});
 
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -194,8 +206,13 @@ public class LaunchListActivity extends AppCompatActivity {
                     String windowEnd = launchList.get(i).get("windowend");
                     String changed = launchList.get(i).get("changed");
                     String url = launchList.get(i).get("url");
+                    String location = launchList.get(i).get("location");
+                    String image = launchList.get(i).get("image");
+                    String stationLocation = launchList.get(i).get("stationlocation");
+                    String stationMap = launchList.get(i).get("stationmap");
+                    String countryCode = launchList.get(i).get("countrycode");
 
-                    Launch2 launch2 = new Launch2(id, name, net, tbdTime, tbdDate, windowStart, windowEnd, changed, url);
+                    Launch2 launch2 = new Launch2(id, name, net, tbdTime, tbdDate, windowStart, windowEnd, changed, url, location, image, stationLocation, stationMap, countryCode);
                     Intent detailsIntent = new Intent(LaunchListActivity.this, LaunchDetails.class);
                     detailsIntent.putExtra("launch", launch2);
                     startActivity(detailsIntent);

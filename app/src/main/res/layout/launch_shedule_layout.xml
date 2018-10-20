@@ -8,41 +8,62 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3"
-        android:layout_margin="4dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/launchImageView"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="125dp"
-            android:layout_margin="8dp"
-            android:padding="10dp"
-            android:src="@drawable/rocket"/>
+        android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/launchLinearLayout"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="6dp">
-            <TextView
-                android:id="@+id/launchTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/rocket_name_tv"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_margin="4dp"/>
-            <TextView
-                android:id="@+id/launchTimeLocationTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/launch_time_tv"
-                android:textSize="16dp"
-                android:layout_margin="2dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_margin="4dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/launchImageViewList"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:padding="20dp"
+                android:src="@drawable/rocket"/>
+            <LinearLayout
+                android:id="@+id/launchLinearLayout"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="6dp">
+                <TextView
+                    android:id="@+id/launchTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rocket_name_tv"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_margin="4dp"/>
+                <TextView
+                    android:id="@+id/launchTimeLocationTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/launch_time_tv"
+                    android:textSize="16dp"
+                    android:layout_margin="2dp"/>
+                <TextView
+                    android:id="@+id/launchLocationTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/launch_time_tv"
+                    android:textSize="16dp"
+                    android:layout_margin="2dp"/>
 
+            </LinearLayout>
         </LinearLayout>
+        <TextView
+            android:text="Details"
+            android:gravity="right"
+            android:textSize="15sp"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"/>
     </LinearLayout>
+
 
 </android.support.v7.widget.CardView>

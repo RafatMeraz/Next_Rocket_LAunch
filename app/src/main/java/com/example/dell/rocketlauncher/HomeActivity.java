@@ -2,6 +2,7 @@ package com.example.dell.rocketlauncher;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
 
     private CardView launchCardView, newsCardView, missionCardView, galleryCardView, liveCardView, educationCardView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +72,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            return true;
+            Intent intent = new Intent(HomeActivity.this, AboutActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -91,6 +95,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.galleryCardView:
+                intent = new Intent(HomeActivity.this, GalleryActivity.class);
+                startActivity(intent);
 
                 break;
             case R.id.liveCardView:
@@ -100,7 +106,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.educationCardView:
-
+                intent = new Intent(HomeActivity.this, WebViewActivity.class);
+                Toast.makeText(this, "Loading Live! Please wait....", Toast.LENGTH_LONG).show();
+                intent.putExtra("link", "https://www.nasa.gov/hrp/em ducation");
+                startActivity(intent);
                 break;
         }
     }

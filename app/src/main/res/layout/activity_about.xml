@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="2dp"
+            android:padding="4dp"
+            android:layout_marginBottom="4dp">
+             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                 android:scaleType="centerCrop"
+                 android:src="@drawable/group"
+                 tools:layout_editor_absoluteX="0dp"
+                 tools:layout_editor_absoluteY="0dp"
+                 android:layout_gravity="center" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="2dp"
+            android:padding="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Minions"
+                    android:textSize="22sp"
+                    android:textColor="#d45105"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:gravity="center"
+                    android:text="Md Rafat Jamader Maraz"
+                    android:textColor="#000"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Android Developer"
+                    android:textSize="17sp"
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
+                    android:text=" Gmail: razhossain201@gmail.com"
+                    android:textSize="17sp"
+                    android:drawableLeft="@drawable/mail"
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:layout_margin="12dp"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Phone: +88 01793785741"
+                    android:drawableLeft="@drawable/phone"
+                    android:textSize="17sp"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:layout_marginBottom="4dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="2dp"
+            android:padding="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:gravity="center"
+                    android:text="Nahid Uddin Ahammed"
+                    android:textColor="#000"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:gravity="center"
+                    android:text="Android Developer"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="12dp"
+                    android:drawableLeft="@drawable/mail"
+                    android:gravity="right"
+                    android:text=" Gmail: nahinuddin07uap@gmail.com"
+                    android:textColor="#000"
+                    android:textIsSelectable="true"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:drawableLeft="@drawable/phone"
+                    android:gravity="center"
+                    android:text=" Phone: +88 01872700022"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="2dp"
+            android:padding="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:gravity="center"
+                    android:text="Md. Naimur Rahman"
+                    android:textColor="#000"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:gravity="center"
+                    android:text="Data Researcher"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="12dp"
+                    android:drawableLeft="@drawable/mail"
+                    android:gravity="center"
+                    android:text=" Gmail: naimur907@gmail.com"
+                    android:textColor="#000"
+                    android:textIsSelectable="true"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:drawableLeft="@drawable/phone"
+                    android:gravity="center"
+                    android:text="Phone: +88 01521330144"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+
+
+</ScrollView>
