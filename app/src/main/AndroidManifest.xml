@@ -12,8 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/app_name"
+            android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,9 +25,12 @@
             android:name=".LaunchDetailsActivity"
             android:label="@string/title_activity_launch_details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GalleryActivity" />
-        <activity android:name=".MissionActivity" />
-        <activity android:name=".MissionDetails" />
+        <activity android:name=".GalleryActivity"
+            android:label="Space Gallery"/>
+        <activity android:name=".MissionActivity"
+            android:label="Missions"/>
+        <activity android:name=".MissionDetails"
+         android:label="Mission Details"/>
 
         <meta-data
             android:name="preloaded_fonts"
@@ -36,8 +38,15 @@
 
         <activity android:name=".WebViewActivity" />
         <activity android:name=".NasaLiveTV" />
-        <activity android:name=".NewsActivity" />
-        <activity android:name=".LaunchDetails"></activity>
+        <activity android:name=".NewsActivity"
+            android:label="News"/>
+        <activity android:name=".LaunchDetails" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AboutActivity"
+            android:label="About"/>
     </application>
 
 </manifest>
